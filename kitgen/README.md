@@ -18,7 +18,7 @@ By default it will create a kit called "localhost" serving fonts for
 
     $ kitgen --token=4d6141e7c82cb30affebcc392abc2ce3ab0ea4c1 \
              --name="My Kit" \
-             --domains=example.com --domains=example.org \
+             --domain=example.com --domain=example.org \
              droid-sans:n4,n7 droid-serif:i4
     Kit created; id is zzw0mki
 

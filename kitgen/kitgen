@@ -142,9 +142,9 @@ class App
       opts.separator ""
       opts.separator "Required options:"
 
-      opts.on('-t', '--token=token', 'Authentication token to use')        { |token| options[:token] = token }
-      opts.on('-n', '--name=name',   'Name for generated kit')             { |token| options[:name] = token }
-      opts.on('-d', '--domain=domain', 'Domains this kit will be used on') { |domain| options[:domains] << domain }
+      opts.on('-t', '--token=token', 'Authentication token to use')          { |token| options[:token] = token }
+      opts.on('-n', '--name=name',   'Name for generated kit')               { |token| options[:name] = token }
+      opts.on('-d', '--domain=domain', 'Domain(s) this kit will be used on') { |domain| options[:domains] << domain }
 
       opts.on_tail('--debug', 'Enable extra debugging information') { @debug = true }
       opts.on_tail('-h', '--help', 'Show this message')             { puts opts; exit 0; }
