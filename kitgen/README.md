@@ -4,7 +4,11 @@ Kitgen
 Kitgen is an example Typekit API client. It can be used to generate new kits
 from the command line.
 
-To use it, call the script with a user token and a font family description:
+Kitgen requires "curb", a Ruby HTTP client library. To install it, run:
+
+    $ sudo gem install curb
+
+To use Kitgen, call the script with a user token and a font family description:
 
     $ kitgen --token=4d6141e7c82cb30affebcc392abc2ce3ab0ea4c1 droid-sans:n4,n7
     Kit created; id is zzw0mki
