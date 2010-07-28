@@ -52,7 +52,7 @@ class Typekit
   #
   # Examples
   #
-  #  add_kit_families('nld3fax', ['droid-sans:n4,i7','droid-serif:n4'])
+  #  add_kit_families('nld3fax', ['gkmg:n4,i7','pcpv:n4'])
   #
   # Returns nothing.
   # Raises RuntimeError if the Typekit API returns an error.
@@ -63,6 +63,22 @@ class Typekit
         'variations' => variations
       })
     end
+  end
+
+  # Converts a font family slug into a font family ID using the Typekit API.
+  #
+  # family_slug - The String family slug.
+  #
+  # Examples
+  #
+  #  get_family_id('droid-sans')
+  #  # => 'gkmg'
+  #
+  # Returns the font family ID as a String.
+  # Raises RuntimeError if the Typekit API returns an error.
+  def get_family_id(family_slug)
+    data = request('GET', "/families/#{family_slug}")
+    return data['family']['id']
   end
 
   # Makes a request to the Typekit API.
@@ -96,7 +112,10 @@ class Typekit
     debug("  response is #{curl.response_code} #{curl.body_str}")
 
     data = JSON.parse(curl.body_str) or raise "Could not parse response #{curl.body_str}"
-    raise data['errors'].first if curl.response_code != 200
+
+    unless [200, 302].include? curl.response_code
+      raise data['errors'].first
+    end
 
     data
   end
@@ -171,6 +190,17 @@ class App
     # create a new Typekit API client
     #
     typekit = Typekit.new(:token => options[:token], :debug => @debug)
+
+    #
+    # Iterate over the families, and make sure we have a family id for each
+    #
+    families.map! do |family|
+      family_slug, variations = family.split(':')
+      family_id = typekit.get_family_id(family_slug)
+      raise "Family #{family_slug} not found" unless family_id
+      "#{family_id}:#{variations}"
+    end
+    debug("processed families are #{families.join(' ')}")
 
     #
     # create a kit using the name and domains provided

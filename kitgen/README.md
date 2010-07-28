@@ -31,12 +31,15 @@ Pass a debug flag to see the API calls made:
     debug:   name is localhost
     debug:   domains are localhost
     debug:   families are droid-sans:n4
+    debug: making GET request to https://typekit.com/api/v1/json/families/droid-sans
+    debug:   response is 302 {"family":{"id":"gkmg","link":"/api/v1/json/families/gkmg"}}
+    debug: processed families are gkmg:n4
     debug: making POST request to https://typekit.com/api/v1/json/kits
     debug:   post data is domains=localhost&name=localhost
-    debug:   response is 200 {"kit":{"id":"zzw0mki","name":"localhost","domains":["localhost"],"families":[]}}
-    debug: making POST request to https://typekit.com/api/v1/json/kits/zzw0mki/families/droid-sans
+    debug:   response is 200 {"kit":{"id":"zzw0mki","name":"localhost","analytics":true,"badge":true,"domains":["localhost"],"families":[]}}
+    debug: making POST request to https://typekit.com/api/v1/json/kits/zzw0mki/families/gkmg
     debug:   post data is variations=n4
-    debug:   response is 200 {"family":{"id":"droid-sans","name":"Droid Sans","css_names":["droid-sans-1","droid-sans-2"],"subset":"default","variations":["n4"]}}
+    debug:   response is 200 {"family":{"id":"gkmg","name":"Droid Sans","css_names":["droid-sans-1","droid-sans-2"],"subset":"default","variations":["n4"]}}
     Kit created; id is zzw0mki
 
 To help understand the details of using the Typekit API all the code is in a
