@@ -3,7 +3,9 @@
 // This script is intended to be called from the following bookmarklet:
 // javascript:(function(){var s=document.createElement('script');s.setAttribute('src','https://github.com/typekit/typekit-api-examples/raw/master/bookmarklet/bookmarklet.js');document.getElementsByTagName('head')[0].appendChild(s);})();
 //
-// See also: http://github.com/typekit/typekit-api-examples/bookmarklet
+// See also:
+// http://github.com/typekit/typekit-api-examples/tree/master/bookmarklet/
+// http://blog.typekit.com/2010/08/25/json-callbacks/
 //
 // ***************************************************************************
 // Copyright 2010 Small Batch Inc
