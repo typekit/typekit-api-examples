@@ -65,9 +65,9 @@
   function findKitId(){
     var kitId = null;
     $('script').each(function(index){
-      var m = this.src.match(/use\.typekit\.com\/(.+)\.js/);
+      var m = this.src.match(/use\.typekit\.(com|net)\/(.+)\.js/);
       if (m) {
-        kitId = m[1];
+        kitId = m[2];
         return false
       }
     });
@@ -75,7 +75,7 @@
   }
 
   // Adds some style to the element then appends it to the body.
-  // 
+  //
   // Returns nothing.
   function display(box){
     // style tweaks
